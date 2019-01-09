@@ -39,4 +39,13 @@ public class CustomerServiceH2Impl implements CustomerService {
             return null;
     }
 
+    @Override
+    public Boolean deleteCustomer(Long id) {
+        if(customerRepository.existsById(id))
+            customerRepository.deleteById(id);
+        else
+            return false;
+        return true;
+    }
+
 }

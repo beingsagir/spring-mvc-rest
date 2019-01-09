@@ -3,6 +3,7 @@ package com.dolovers.springmvcrest.controllers;
 
 import com.dolovers.springmvcrest.domain.Customer;
 import com.dolovers.springmvcrest.services.CustomerService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,21 +26,28 @@ public class CustomerController {
         return customerService.findAllCustomers();
     }
 
-    @GetMapping("/{id_}")
-    Customer getCustomerById(@PathVariable Long id_){
-        return customerService.findCustomerById(id_);
+    @GetMapping("/{id}")
+    Customer getCustomerById(@PathVariable Long id){
+        return customerService.findCustomerById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer saveCustomer(@RequestBody Customer customer_){
-        return customerService.saveCustomer(customer_);
+    public Customer saveCustomer(@RequestBody Customer customer){
+        return customerService.saveCustomer(customer);
     }
 
-    @PutMapping("/{id_}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer updateCustomer(@PathVariable Long id_, @RequestBody Customer customer_){
-        return customerService.updateCustomer(id_, customer_);
+    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
+        return customerService.updateCustomer(id, customer);
+    }
+
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Boolean deleteCustomer(@PathVariable Long id){
+        return customerService.deleteCustomer(id);
     }
 
 }
