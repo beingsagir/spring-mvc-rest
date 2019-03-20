@@ -3,7 +3,7 @@ package com.dolovers.springmvcrest.controllers;
 
 import com.dolovers.springmvcrest.domain.Customer;
 import com.dolovers.springmvcrest.services.CustomerService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +15,8 @@ public class CustomerController {
 
     public static final String BASE_URL = "/api/v1/customers";
 
-    private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    @Autowired
+    CustomerService customerService;
 
     @GetMapping
     List<Customer> getAllCustomers(){
@@ -42,7 +39,6 @@ public class CustomerController {
     public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
         return customerService.updateCustomer(id, customer);
     }
-
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
