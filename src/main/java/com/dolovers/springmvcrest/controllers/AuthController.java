@@ -1,6 +1,5 @@
 package com.dolovers.springmvcrest.controllers;
 
-import com.dolovers.springmvcrest.domain.Customer;
 import com.dolovers.springmvcrest.domain.User;
 import com.dolovers.springmvcrest.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;

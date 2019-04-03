@@ -1,14 +1,12 @@
 package com.dolovers.springmvcrest.controllers;
 
 
-import com.dolovers.springmvcrest.domain.User;
 import com.dolovers.springmvcrest.services.ExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(ExcelController.BASE_URL)
@@ -20,6 +18,11 @@ public class ExcelController {
 
     @GetMapping
     String getReport(){
+        return excelService.generateDynamicExcel();
+    }
+
+    @GetMapping()
+    String getReportById(){
         return excelService.generateDynamicExcel();
     }
 
